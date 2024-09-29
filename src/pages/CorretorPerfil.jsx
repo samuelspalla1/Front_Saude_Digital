@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import Button from '../components/Button';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import Button from '../components/Button'
+import { useNavigate } from 'react-router-dom'
 
 const mockCorretores = [
   {
@@ -38,32 +38,32 @@ const mockCorretores = [
       },
     ],
   },
-];
+]
 
 function CorretorPerfil() {
-  const { id } = useParams(); // Obter ID do corretor da URL
-  const navigate = useNavigate();
-  const [corretor, setCorretor] = useState(null);
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const [corretor, setCorretor] = useState(null)
 
   useEffect(() => {
-    const corretorData = mockCorretores.find((cor) => cor.id === parseInt(id));
-    setCorretor(corretorData);
-  }, [id]);
+    const corretorData = mockCorretores.find((cor) => cor.id === parseInt(id))
+    setCorretor(corretorData)
+  }, [id])
 
   const handleGoToHome = () => {
-    navigate('/cliente-dashboard');
-  };
+    navigate('/cliente-dashboard')
+  }
 
   const handleMessages = () => {
-    navigate('/messages');
-  };
+    navigate('/messages')
+  }
 
   const handleLogout = () => {
-    navigate('/login');
-  };
+    navigate('/login')
+  }
 
   if (!corretor) {
-    return <div>Carregando...</div>;
+    return <div>Carregando...</div>
   }
 
   return (

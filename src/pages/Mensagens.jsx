@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Button from '../components/Button'
 
 const mockCorretores = [
   {
@@ -13,8 +13,7 @@ const mockCorretores = [
     nome: 'Ana Souza',
     fotoUrl: 'https://via.placeholder.com/150',
   },
-  // Outros corretores...
-];
+]
 
 function Mensagens() {
   const navigate = useNavigate();
@@ -26,18 +25,16 @@ function Mensagens() {
     navigate('/cliente-dashboard');
   };
 
-  const handleSair = () => {
-    // Implementar lógica para sair
-    alert("Saindo...");
-  };
+  const handleLogout = () => {
+    navigate('/login')
+  }
 
   const handleEnviar = () => {
     if (mensagem.trim() === "") {
       alert("Por favor, digite uma mensagem.");
     } else {
-      // Adicionar a nova mensagem à lista de mensagens
       setMensagens([...mensagens, { remetente: 'Você', texto: mensagem }]);
-      setMensagem(''); // Limpar o campo de entrada
+      setMensagem(''); 
     }
   };
 
@@ -49,7 +46,7 @@ function Mensagens() {
 
   const handleCorretorSelecionado = (corretor) => {
     setCorretorSelecionado(corretor);
-    setMensagens([]); // Limpa as mensagens ao selecionar um novo corretor
+    setMensagens([]);
   };
 
   return (
@@ -58,7 +55,7 @@ function Mensagens() {
         <h1 className="text-bg_azul_escuro text-3xl font-bold">Saúde Digital</h1>
         <div className="flex space-x-4">
           <Button text="Página Principal" onClick={handleGoToHome} />
-          <Button text="Sair" onClick={handleSair} />
+          <Button text="Desconectar" onClick={handleLogout} />
         </div>
       </header>
 
@@ -84,7 +81,6 @@ function Mensagens() {
 
         <main className="w-3/4 bg-white p-4 flex flex-col border-l border-gray-300">
           <div className="flex-1 border border-gray-300 rounded-lg p-4 overflow-y-auto h-full flex flex-col">
-            {/* Simulação de mensagens */}
             {corretorSelecionado ? (
               <>
                 <h2 className="text-lg font-bold mb-2">
@@ -105,22 +101,20 @@ function Mensagens() {
               <p>Selecione um corretor para iniciar o chat.</p>
             )}
           </div>
-
-          {/* Área para enviar nova mensagem */}
           <div className="flex mt-4">
             <input
               type="text"
               placeholder="Digite sua mensagem..."
               value={mensagem}
               onChange={(e) => setMensagem(e.target.value)}
-              onKeyDown={handleKeyDown} // Enviar mensagem ao pressionar Enter
+              onKeyDown={handleKeyDown}
               className="border border-gray-300 rounded-lg p-2 w-full"
-              disabled={!corretorSelecionado} // Desabilitar se nenhum corretor estiver selecionado
+              disabled={!corretorSelecionado}
             />
             <button
               className="bg-bg_azul_escuro text-white rounded-lg px-4 py-2 ml-2"
               onClick={handleEnviar}
-              disabled={!corretorSelecionado} // Desabilitar se nenhum corretor estiver selecionado
+              disabled={!corretorSelecionado}
             >
               Enviar
             </button>

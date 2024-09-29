@@ -1,41 +1,41 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import './index.css';
-import App from './App.jsx'; // Componente principal
-import ClienteDashboard from './pages/ClienteDashboard.jsx'; // Dashboard do cliente
-import CorretorDashboard from './pages/CorretorDashboard.jsx'; // Dashboard do corretor
-import CorretorPerfil from './pages/CorretorPerfil.jsx';
-import Mensagens from './pages/Mensagens.jsx';
+import App from './App.jsx'
+import ClienteDashboard from './pages/ClienteDashboard.jsx'
+import CorretorDashboard from './pages/CorretorDashboard.jsx'
+import CorretorPerfil from './pages/CorretorPerfil.jsx'
+import Mensagens from './pages/Mensagens.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App isLogin={true} />, // Tela de login
+    element: <App isLogin={true} />, 
   },
   {
     path: '/login',
-    element: <App isLogin={true} />, // Rota para a tela de login
+    element: <App isLogin={true} />,
   },
   {
     path: '/register',
-    element: <App isLogin={false} />, // Rota para a tela de cadastro
+    element: <App isLogin={false} />, 
   },
   {
     path: '/cliente-dashboard',
-    element: <ClienteDashboard />, // Rota para o dashboard do cliente
+    element: <ClienteDashboard />,
   },
   {
     path: '/corretor-dashboard',
-    element: <CorretorDashboard />, // Rota para o dashboard do corretor
+    element: <CorretorDashboard />, 
   },
   {
-    path: '/corretor-perfil/:id', // Rota dinâmica com o ID do corretor
+    path: '/corretor-perfil/:id', 
     element: <CorretorPerfil />,
   },
   {
-    path: '/messages', // Rota para a página de mensagens
+    path: '/messages', 
     element: <Mensagens />,
   },
 ])

@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Button from '../components/Button'; // Importando o botão reutilizável
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import Button from '../components/Button'
+import { useNavigate } from 'react-router-dom'
 
-// Simulação de dados vindos do backend (apenas exemplo, substituir por dados reais do backend)
 const mockCorretores = [
   {
     id: 1,
     nome: 'João Silva',
-    fotoUrl: 'https://via.placeholder.com/150', // Substitua pelo caminho correto
+    fotoUrl: 'https://via.placeholder.com/150', 
   },
   {
     id: 2,
@@ -22,37 +21,33 @@ const mockCorretores = [
 ];
 
 function ClienteDashboard() {
-  const navigate = useNavigate();
-  const [corretores, setCorretores] = useState([]);
+  const navigate = useNavigate()
+  const [corretores, setCorretores] = useState([])
 
-  // Função simulando chamada ao backend
   useEffect(() => {
-    // Substitua isso por uma chamada de API real
     const fetchCorretores = async () => {
       // Exemplo: const response = await fetch('/api/corretores');
       // const data = await response.json();
-      setCorretores(mockCorretores); // Aqui, os dados simulados são usados, substitua pelos dados da API
+      setCorretores(mockCorretores);
     };
-    fetchCorretores();
-  }, []);
+    fetchCorretores()
+  }, [])
 
   const handleLogout = () => {
-    navigate('/login');
+    navigate('/login')
   };
 
   const handleMessages = () => {
-    navigate('/messages');
+    navigate('/messages')
   };
 
   const handleVerPerfil = (id) => {
-    // Navegar para a página de perfil do corretor com o ID
-    navigate(`/corretor-perfil/${id}`);
+    navigate(`/corretor-perfil/${id}`)
   };
 
 
   return (
     <div className="min-h-screen bg-bg_bege">
-      {/* Header */}
       <header className="bg-white border-b-2 border-black flex justify-between items-center p-4">
         <h1 className="text-bg_azul_escuro text-3xl font-bold">Saúde Digital</h1>
         <div className="flex space-x-4">
@@ -60,10 +55,7 @@ function ClienteDashboard() {
           <Button text="Desconectar" onClick={handleLogout} />
         </div>
       </header>
-
-      {/* Conteúdo */}
       <div className="flex">
-        {/* Menu Lateral */}
         <aside className="w-1/4 bg-white p-4 min-h-screen">
           <h2 className="text-xl font-bold mb-4">Filtros</h2>
           <div className="mb-4">
@@ -84,11 +76,8 @@ function ClienteDashboard() {
             </select>
           </div>
         </aside>
-
-        {/* Área Principal */}
         <main className="w-3/4 bg-bg_bege p-4">
           <div className="grid grid-cols-3 gap-4">
-            {/* Mapear corretores vindos do backend */}
             {corretores.map((corretor) => (
               <div key={corretor.id} className="bg-white p-4 rounded shadow-md">
                 <img
