@@ -8,6 +8,7 @@ import ClienteDashboard from './pages/ClienteDashboard.jsx'
 import CorretorDashboard from './pages/CorretorDashboard.jsx'
 import CorretorPerfil from './pages/CorretorPerfil.jsx'
 import Mensagens from './pages/Mensagens.jsx'
+import PerfilCorretorEdit from './pages/CorretorPerfilEdit.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: '/messages', 
     element: <Mensagens />,
+  },
+  {
+    path: '/corretor-perfil-edit/:id', 
+    element: <PerfilCorretorEdit />,
   },
 ])
 
